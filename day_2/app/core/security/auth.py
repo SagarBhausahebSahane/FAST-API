@@ -98,7 +98,7 @@ def access_control_auth(*roles):
         async def wrapper(**kwargs):
             current_user = kwargs.get("current_user")
             if not current_user:
-                raise HTTPException(status_code=401,detail="Not authenticated")
+                raise HTTPException(status_code=401, detail="Not authenticated")
             if current_user['role'] not in roles:
                 raise HTTPException(status_code=403, detail="Not authorized")
             return await func(**kwargs)
